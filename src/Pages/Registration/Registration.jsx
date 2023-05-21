@@ -3,10 +3,28 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useContext, useState } from "react";
 
 const Registration = () => {
-    const { signIn, googleSignIn } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
     const [error, setError] = useState("");
 
-    
+    const handleRegister = (event) => {
+        setError("");
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photo = form.photo.value;
+
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+            setError("")
+        })
+        .catch(error => {
+            setError(error.message)
+        })
+    }
 
     return (
         <div className="hero min-h-screen bg-base-200 mb-4">
@@ -14,7 +32,7 @@ const Registration = () => {
                 <div className="card flex mx-auto w-5/12 shadow-2xl bg-base-100 ">
                     <div className="card-body">
                         <h2 className="text-center text-3xl font-bold">Register</h2>
-                        <form onSubmit={""}>
+                        <form onSubmit={handleRegister}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -43,7 +61,7 @@ const Registration = () => {
                                 <input className="btn btn-primary" type="submit" value="Register" />
                             </div>
                             <div>
-                                <p className="text-red-600">{""}</p>
+                                <p className="text-red-600">{error}</p>
                             </div>
                         </form>
                         <div>
