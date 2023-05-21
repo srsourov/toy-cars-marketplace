@@ -3,7 +3,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useContext, useState } from "react";
 
 const Registration = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
     const [error, setError] = useState("");
 
     const handleRegister = (event) => {
@@ -17,9 +17,16 @@ const Registration = () => {
 
         createUser(email, password)
         .then(result => {
-            const user = result.user;
-            console.log(user)
+            const user = result.user; 
             setError("")
+            updateUser(name, photo)
+            .then(() => {
+                console.log(user)
+                form.reset();
+            })
+            .catch(error => {
+                setError(error.message)
+            })
         })
         .catch(error => {
             setError(error.message)
