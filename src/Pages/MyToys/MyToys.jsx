@@ -29,14 +29,14 @@ const MyToys = () => {
                     console.log(data)
                     if (data.deletedCount > 0) {
                         alert("deleted successfully");
-                        // const remaining = bookings.filter(booking => booking._id !== id);
-                        // setCarAdded(remaining)
+                        const remaining = carAdded.filter(car => car._id !== id);
+                        setCarAdded(remaining)
                     }
                 })
         }
     }
     return (
-        <div>
+        <div className='my-8'>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}

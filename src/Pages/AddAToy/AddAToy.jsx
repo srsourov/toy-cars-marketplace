@@ -79,25 +79,25 @@ const AddAToy = () => {
                             <label className="label">
                                 <span className="label-text">Picture URL of the toy</span>
                             </label>
-                            <input type="text" name="toypicture" placeholder="Picture URL of the toy" className="input input-bordered" />
+                            <input required type="text" name="toypicture" placeholder="Picture URL of the toy" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Toy Name</span>
                             </label>
-                            <input type="text" name="toyname" placeholder="Toy Name" className="input input-bordered" />
+                            <input required type="text" name="toyname" placeholder="Toy Name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Seller Name</span>
                             </label>
-                            <input type="text" name="sellername" defaultValue={user?.displayName} placeholder="Seller Name" className="input input-bordered" />
+                            <input required type="text" name="sellername" defaultValue={user?.displayName} placeholder="Seller Name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Seller Email</span>
                             </label>
-                            <input type="text" name="selleremail" defaultValue={user?.email} placeholder="Seller Email" className="input input-bordered" />
+                            <input required type="email" name="selleremail" defaultValue={user?.email} placeholder="Seller Email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -119,19 +119,19 @@ const AddAToy = () => {
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input type="text" name="price" className="input input-bordered" />
+                            <input required type="text" name="price" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input type="text" name="rating" className="input input-bordered" />
+                            <input required type="text" name="rating" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Available Quantity</span>
                             </label>
-                            <input type="text" name="quantity" placeholder="email" className="input input-bordered" />
+                            <input required type="text" name="quantity" placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control w-[1200px]">
                             <label className="label">
