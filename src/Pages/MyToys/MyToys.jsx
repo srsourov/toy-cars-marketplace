@@ -3,6 +3,9 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import MySingleCar from './MySingleCar';
 
 const MyToys = () => {
+    useEffect(() => {
+        document.title = 'My Toys';
+      }, []);
     const { user } = useContext(AuthContext);
     const [carAdded, setCarAdded] = useState([]);
 

@@ -3,8 +3,10 @@ import Hero from "./Hero";
 import ShopByCategory from "./ShopByCategory";
 
 const Home = () => {
+    
     return (
         <div>
+
             <Hero></Hero>
             <GallerySection></GallerySection>
             <ShopByCategory></ShopByCategory>
@@ -20,7 +22,7 @@ const Home = () => {
                 <div className="hero-content flex-col lg:flex-row ">
                     <div className="w-6/12">
                         <img src="https://static-01.daraz.com.bd/p/0307a5d1da1082cd9e83b88497cb4cfd.jpg" className="max-w-sm mx-auto rounded-lg shadow-2xl" />
-                    </div> 
+                    </div>
                     <div className="w-5/12">
                         <h1 className="text-5xl font-bold">The Burning Royce!</h1>
                         <p className="py-6">Rolls-Royce is a prestigious British luxury car manufacturer known for producing some of the most luxurious and elegant automobiles in the world. </p>

@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 
 const CarUpdate = () => {
+    useEffect(() => {
+        document.title = 'Update Car';
+      }, []);
     const car = useLoaderData();
     const {toyPic,toyName,sellerName,sellerEmail ,price,rating,availableQuantity,detailDescription, _id } = car;
     const { user } = useContext(AuthContext)

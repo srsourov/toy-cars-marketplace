@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import SingleCarRow from './SingleCarRow';
 
 const AllToys = () => {
-    
+    useEffect(() => {
+        document.title = 'All Toys';
+      }, []);
     const allCars = useLoaderData();
 
     return (
