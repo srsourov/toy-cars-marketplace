@@ -1,39 +1,50 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-// import { useContext } from "react";
-// import { AuthContext } from "../../../providers/AuthProvider";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Header = () => {
 
-    // const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
-    // const handleLogOut = () => {
-    //     logOut()
-    //         .then(() => {
-                
-    //         })
-    //         .catch(error => console.log(error))
-    //     }
-    // const notify = () => toast(`Name: ${user.displayName}`)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => console.log(error))
+    }
+    const notify = () => toast.info(`Name: ${user?.displayName}`)
+
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/">All Toys</Link></li>
         <li><Link to="/">Blogs</Link></li>
 
-        {/* {
+        {
             user?.email ? <>
                 <li><Link to="/bookings">My Toys</Link></li>
                 <li><Link to="/">Add A Toy</Link></li>
                 <li><button onClick={handleLogOut}>Logout</button></li>
-                <img onMouseEnter={notify} style={{width: "40px", height: "40px", borderRadius: "50%"}} src={user.photoURL} alt="" />
+                <div className="avatar ml-4">
+                    <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <img onMouseEnter={notify} src={user.photoURL} alt="" />
+                    </div>
+                </div>
                 <ToastContainer></ToastContainer>
+
+
             </>
                 :
                 <li><Link to="/login">Login</Link></li>
-        } */}
+        }
+
 
     </>
 
-    
+
     return (
         <div className="navbar bg-base-100 h-28 mb-4	">
             <div className="navbar-start">
@@ -46,7 +57,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-xl flex">
-                    <img style={{width: "50px", marginRight: "10px"}} src="https://cdn-icons-png.flaticon.com/512/1386/1386961.png" alt="" />
+                    <img style={{ width: "50px", marginRight: "10px" }} src="https://cdn-icons-png.flaticon.com/512/1386/1386961.png" alt="" />
                     <h1 className="text-3xl">Toy Cars Market</h1>
                 </Link>
             </div>
@@ -54,9 +65,6 @@ const Header = () => {
                 <ul className="menu menu-horizontal px-1">
                     {navItems}
                 </ul>
-            </div>
-            <div className="navbar-end">
-                <button className="btn btn-outline btn-warning">Appointment</button>
             </div>
         </div>
     );

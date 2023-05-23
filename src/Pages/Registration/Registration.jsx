@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 const Registration = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
     const handleRegister = (event) => {
         setError("");
@@ -18,7 +19,8 @@ const Registration = () => {
         createUser(email, password)
         .then(result => {
             const user = result.user; 
-            setError("")
+            setError("");
+            setSuccess("Successfully Registered")
             updateUser(name, photo)
             .then(() => {
                 console.log(user)
@@ -69,6 +71,7 @@ const Registration = () => {
                             </div>
                             <div>
                                 <p className="text-red-600">{error}</p>
+                                <p className="text-green-600">{success}</p>
                             </div>
                         </form>
                         <div>
