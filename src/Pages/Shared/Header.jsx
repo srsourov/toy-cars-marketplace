@@ -26,7 +26,7 @@ const Header = () => {
         {
             user?.email ? <>
                 <li><Link to="/mytoys">My Toys</Link></li>
-                <li><Link to="/">Add A Toy</Link></li>
+                <li><Link to="/addatoy">Add A Toy</Link></li>
                 <li><button onClick={handleLogOut}>Logout</button></li>
                 <div className="avatar ml-4">
                     <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
