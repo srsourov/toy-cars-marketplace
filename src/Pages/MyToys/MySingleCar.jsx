@@ -36,7 +36,7 @@ const MySingleCar = ({car, handleDelete }) => {
             <td>{availableQuantity}</td>
             <th>
                 
-                <Link to="/updatecar/${_id}" className="btn btn-primary btn-xs">Update</Link>
+                <Link to={`/carupdate/${_id}`} className="btn btn-primary btn-xs">Update</Link>
                 
             </th>
         </tr>

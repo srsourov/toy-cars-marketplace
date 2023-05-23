@@ -10,6 +10,7 @@ import Blog from "../Pages/Blog/Blog";
 import AllToys from "../Pages/AllToys/AllToys";
 import AddAToy from "../Pages/AddAToy/AddAToy";
 import MyToys from "../Pages/MyToys/MyToys";
+import CarUpdate from "../Pages/CarUpdate/CarUpdate";
 
 
 const router = createBrowserRouter([
@@ -49,7 +50,12 @@ const router = createBrowserRouter([
             },
             {
                 path: "/mytoys",
-                element: <MyToys></MyToys>
+                element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
+            },
+            {
+                path: "/carupdate/:id",
+                element: <PrivateRoute><CarUpdate></CarUpdate></PrivateRoute>,
+                loader: ({params}) =>  fetch(`http://localhost:5000/caradded/${params.id}`)
             }
         ]
     },
