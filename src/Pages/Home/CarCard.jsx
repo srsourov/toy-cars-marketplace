@@ -1,9 +1,10 @@
 import Rating from "react-rating";
 import iconFull from "../../assets/iconFull.png"
 import iconEmpty from "../../assets/iconEmpty.png"
+import { Link } from "react-router-dom";
 
 const CarCard = ({ car }) => {
-    const { picture, toyName, price, rating } = car;
+    const { picture, toyName, price, rating, _id } = car;
 
     return (
         <div style={{ boxShadow: "0px 0px 10px 0px #00000052" }} className="card w-96 bg-base-100">
@@ -20,7 +21,7 @@ const CarCard = ({ car }) => {
                 />
                 </p>
                 <div className="card-actions justify-start">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <Link to={`/carDetails/${_id}`}><button className="btn btn-primary">View Details</button></Link>
                 </div>
             </div>
         </div>

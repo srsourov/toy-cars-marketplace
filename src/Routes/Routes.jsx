@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import Page404 from "../Pages/404Page/Page404";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
+import CarDetails from "../Pages/CarDetails/CarDetails";
+import PrivateRoute from "./PrivatRoute";
 
 
 const router = createBrowserRouter([
@@ -16,11 +18,6 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: "/:id",
-                element: <Home></Home>,
-                loader: ({params}) => fetch(`http://localhost:5000/cars/${params.id}`)
-            },
-            {
                 path: "/login",
                 element: <Login></Login>
             },
@@ -28,6 +25,11 @@ const router = createBrowserRouter([
                 path: "/registration",
                 element: <Registration></Registration>
             },
+            {
+                path: "/carDetails/:id",
+                element: <PrivateRoute><CarDetails></CarDetails></PrivateRoute>,
+                loader: ({params}) =>  fetch(`http://localhost:5000/car/${params.id}`)
+            }
         ]
     },
     {
