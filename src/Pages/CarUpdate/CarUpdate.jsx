@@ -58,7 +58,7 @@ const CarUpdate = () => {
             detailDescription
         }
         console.log()
-        fetch(`http://localhost:5000/caradded/${_id}`, {
+        fetch(`https://toy-cars-marketplace-server.vercel.app/caradded/${_id}`, {
             method: "PATCH",
             headers: {
                 "content-type" : "application/json"

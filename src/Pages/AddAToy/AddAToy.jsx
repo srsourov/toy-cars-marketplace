@@ -54,7 +54,7 @@ const AddAToy = () => {
             detailDescription: detailDescription
         }
         console.log(caradded)
-        fetch("http://localhost:5000/carAdded", {
+        fetch("https://toy-cars-marketplace-server.vercel.app/carAdded", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

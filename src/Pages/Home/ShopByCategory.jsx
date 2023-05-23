@@ -8,13 +8,13 @@ const ShopByCategory = () => {
     const [cars, setCars] = useState([]);
 
     const loadCars = (id) => {
-        fetch(`http://localhost:5000/cars/${id}`)
+        fetch(`https://toy-cars-marketplace-server.vercel.app/cars/${id}`)
             .then(res => res.json())
             .then(data => setCars(data))
 
     }
     useEffect(() => {
-        fetch(`http://localhost:5000/cars/1`)
+        fetch(`https://toy-cars-marketplace-server.vercel.app/cars/1`)
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
