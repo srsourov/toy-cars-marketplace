@@ -21,11 +21,11 @@ const Header = () => {
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/">All Toys</Link></li>
-        <li><Link to="/">Blogs</Link></li>
+        <li><Link to="/blog">Blogs</Link></li>
 
         {
             user?.email ? <>
-                <li><Link to="/bookings">My Toys</Link></li>
+                <li><Link to="/mytoys">My Toys</Link></li>
                 <li><Link to="/">Add A Toy</Link></li>
                 <li><button onClick={handleLogOut}>Logout</button></li>
                 <div className="avatar ml-4">
