@@ -1,7 +1,23 @@
+import { useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import CarCard from './CarCard';
 const ShopByCategory = () => {
 
+    const [cars, setCars] = useState([]);
+
+    const loadCars = (id) => {
+        fetch(`http://localhost:5000/cars/${id}`)
+            .then(res => res.json())
+            .then(data => setCars(data))
+
+    }
+    useEffect(() => {
+        fetch(`http://localhost:5000/cars/1`)
+            .then(res => res.json())
+            .then(data => setCars(data))
+    },[])
 
 
     return (
@@ -20,19 +36,40 @@ const ShopByCategory = () => {
                     <TabPanel>
                         <Tabs>
                             <TabList>
-                                <Tab style={{ backgroundColor: "#7C3DFF", color: "#ffffff", margin: "0 10px", padding: "10px 20px" }}>Formula 1 Cars</Tab>
-                                <Tab style={{ backgroundColor: "#7C3DFF", color: "#ffffff", margin: "0 10px", padding: "10px 20px" }}>Sports Cars</Tab>
-                                <Tab style={{ backgroundColor: "#7C3DFF", color: "#ffffff", margin: "0 10px", padding: "10px 20px" }}>Rally Cars</Tab>
+                                <Tab onClick={() => loadCars("1")} style={{ backgroundColor: "#7C3DFF", color: "#ffffff", margin: "0 10px", padding: "10px 20px" }}>Formula 1 Cars</Tab>
+                                <Tab onClick={() => loadCars("2")} style={{ backgroundColor: "#7C3DFF", color: "#ffffff", margin: "0 10px", padding: "10px 20px" }}>Sports Cars</Tab>
+                                <Tab onClick={() => loadCars("3")} style={{ backgroundColor: "#7C3DFF", color: "#ffffff", margin: "0 10px", padding: "10px 20px" }}>Rally Cars</Tab>
                             </TabList>
 
                             <TabPanel>
-                                <h2>Any content 1</h2>
+                                <div className="grid grid-cols-2 gap-4 w-9/12 mx-auto my-8">
+                                    {
+                                        cars.map(car => <CarCard
+                                            key={car._id}
+                                            car={car}
+                                        ></CarCard>)
+                                    }
+                                </div>
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 2</h2>
+                            <div className="grid grid-cols-2 gap-4 w-9/12 mx-auto my-8">
+                                    {
+                                        cars.map(car => <CarCard
+                                            key={car._id}
+                                            car={car}
+                                        ></CarCard>)
+                                    }
+                                </div>
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 3</h2>
+                            <div className="grid grid-cols-2 gap-4 w-9/12 mx-auto my-8">
+                                    {
+                                        cars.map(car => <CarCard
+                                            key={car._id}
+                                            car={car}
+                                        ></CarCard>)
+                                    }
+                                </div>
                             </TabPanel>
                         </Tabs>
                     </TabPanel>
@@ -74,7 +111,7 @@ const ShopByCategory = () => {
                             </TabPanel>
                         </Tabs>
                     </TabPanel>
-                  
+
                 </Tabs>
             </div>
         </div>
