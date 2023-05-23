@@ -5,7 +5,7 @@ import { useContext } from 'react';
 const AddAToy = () => {
     const {user} = useContext(AuthContext);
 
-    const notify = () => toast.success('Adeed successfully', {
+    const notify = () => toast.success('Added successfully', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: true,
@@ -131,7 +131,7 @@ const AddAToy = () => {
                             <label className="label">
                                 <span className="label-text">Available Quantity</span>
                             </label>
-                            <input required type="text" name="quantity" placeholder="email" className="input input-bordered" />
+                            <input required type="text" name="quantity" placeholder="Available Quantity" className="input input-bordered" />
                         </div>
                         <div className="form-control w-[1200px]">
                             <label className="label">

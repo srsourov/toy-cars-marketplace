@@ -1,8 +1,37 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const CarUpdate = () => {
     const car = useLoaderData();
-    const {toyPic,toyName,sellerName,sellerEmail,subcategory,price,rating,availableQuantity,detailDescription } = car;
+    const {toyPic,toyName,sellerName,sellerEmail ,price,rating,availableQuantity,detailDescription, _id } = car;
+    const { user } = useContext(AuthContext)
+
+
+    const notify = () => toast.success('Updated successfully', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+
+    < ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+    />
 
     const handleUpdate = (event) => {
         event.preventDefault();
@@ -29,23 +58,24 @@ const CarUpdate = () => {
             detailDescription
         }
         console.log()
-    }
-
-
-    fetch(`http://localhost:5000/caradded/${_id}`, {
-            method: "PUT",
+        fetch(`http://localhost:5000/caradded/${_id}`, {
+            method: "PATCH",
             headers: {
                 "content-type" : "application/json"
             },
-            body: JSON.stringify(updatedCoffee)
+            body: JSON.stringify(carUpdate)
         })
         .then(res => res.json())
         .then(data => {
             console.log(data)
             if(data.modifiedCount > 0){
-                console.log("1")
+                    notify(); 
             }
         })
+    }
+
+
+    
     return (
         <div>
             <div className="card-body">
@@ -107,7 +137,7 @@ const CarUpdate = () => {
                             <label className="label">
                                 <span className="label-text">Available Quantity</span>
                             </label>
-                            <input defaultValue={availableQuantity} required type="text" name="quantity" placeholder="email" className="input input-bordered" />
+                            <input defaultValue={availableQuantity} required type="text" name="quantity" placeholder="Available Quantity" className="input input-bordered" />
                         </div>
                         <div className="form-control w-[1200px]">
                             <label className="label">
@@ -117,7 +147,7 @@ const CarUpdate = () => {
                         </div>
                     </div>
                     <div className="form-control mt-6">
-                        <input className="btn btn-primary btn-block" type="submit" value="Add Toy" />
+                        <input className="btn btn-primary btn-block" type="submit" value="Update Toy" />
                     </div>
                 </form>
             </div>
