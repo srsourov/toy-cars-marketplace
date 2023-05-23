@@ -1,6 +1,10 @@
 import { ToastContainer, toast } from 'react-toastify';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { useContext } from 'react';
 
 const AddAToy = () => {
+    const {user} = useContext(AuthContext);
+
     const notify = () => toast.success('Adeed successfully', {
         position: "top-center",
         autoClose: 5000,
@@ -62,7 +66,7 @@ const AddAToy = () => {
                 if (data.insertedId) {
                     notify();
                     console.log(data)
-
+                    form.reset();
                 }
             })
     }
@@ -87,13 +91,13 @@ const AddAToy = () => {
                             <label className="label">
                                 <span className="label-text">Seller Name</span>
                             </label>
-                            <input type="text" name="sellername" defaultValue={"user?.displayName"} placeholder="Seller Name" className="input input-bordered" />
+                            <input type="text" name="sellername" defaultValue={user?.displayName} placeholder="Seller Name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Seller Email</span>
                             </label>
-                            <input type="text" name="selleremail" defaultValue={"user?.email"} placeholder="Seller Email" className="input input-bordered" />
+                            <input type="text" name="selleremail" defaultValue={user?.email} placeholder="Seller Email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
